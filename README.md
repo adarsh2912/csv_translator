@@ -1,6 +1,6 @@
 # csv_translator
 
-## Prerequisite
+## Prerequisites
 --> Keep running mongodb on localhost<br/>
 --> Run RabbitMQ messaging-brocker [installation guide](https://www.rabbitmq.com/#getstarted)
 
