@@ -5,6 +5,8 @@ from translator.helper import (
   get_csv_data,
   save_file_as_base64
 )
+from .models import Translations
+from django.core.serializers import serialize
 from django.views.decorators.http import require_http_methods
 
 @require_http_methods(['POST'])
@@ -21,3 +23,15 @@ def upload_csv(request):
     'job_id': job.id
   }
   return JsonResponse(response, status=202)
+
+@require_http_methods(['GET'])
+def get_translated_data(request, id):
+  data = Translations.objects.filter(file_id=id)
+  model_to_dict=[model for model in data.values()]
+  for item in model_to_dict:
+    item['_id'] = str(item.get('_id'))
+
+  return JsonResponse(model_to_dict, safe=False, json_dumps_params={'ensure_ascii': False})
+
+
+
