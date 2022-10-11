@@ -12,6 +12,9 @@ class FarmerDetails(models.Model):
   district_name = models.CharField(max_length=200)
   village_name = models.CharField(max_length=200)
 
+  def __getitem__(self, phone_number, farmer_name, state_name, district_name, village_name):
+        return getattr(self, phone_number, farmer_name, state_name, district_name, village_name)
+        
   class Meta:
     abstract = True
 
