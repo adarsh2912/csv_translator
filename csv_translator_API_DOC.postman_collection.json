@@ -1,0 +1,192 @@
+{
+	"info": {
+		"_postman_id": "ac80a6a0-7f54-4859-8033-b639eb85cfb2",
+		"name": "csv_translator_API_DOC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11249975"
+	},
+	"item": [
+		{
+			"name": "POST request with csv file",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/siddh/Downloads/test.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/upload",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"upload"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "POST request with csv file",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/siddh/Downloads/test.csv"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/upload",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"upload"
+							]
+						}
+					},
+					"status": "Accepted",
+					"code": 202,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 11 Oct 2022 12:30:16 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "121"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"msg\": \"uploaded successfully\",\n    \"file_id\": \"634561d82bebedddbbf8e211\",\n    \"job_id\": \"58cc33f5-4281-4a7e-9628-d7496a714f5d\"\n}"
+				}
+			]
+		},
+		{
+			"name": "GET request for traslations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/translate/634561d82bebedddbbf8e211/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"translate",
+						"634561d82bebedddbbf8e211",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "GET request for traslations",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/translate/634561d82bebedddbbf8e211/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"translate",
+								"634561d82bebedddbbf8e211",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 11 Oct 2022 12:37:42 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.10.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "4169"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"_id\": \"634561dab361cc45bda794ae\",\n        \"english\": {\n            \"phone_number\": \"999999999\",\n            \"farmer_name\": \"Pandey\",\n            \"state_name\": \"Maharashtra\",\n            \"district_name\": \"Wardha\",\n            \"village_name\": \"Deoli\"\n        },\n        \"hindi\": {\n            \"phone_number\": \"999999999\",\n            \"farmer_name\": \"पांडे\",\n            \"state_name\": \"महाराष्ट्र\",\n            \"district_name\": \"वर्धा\",\n            \"village_name\": \"देवोली\"\n        },\n        \"marathi\": {\n            \"phone_number\": \"९९९९९९९९९\",\n            \"farmer_name\": \"पांडे\",\n            \"state_name\": \"महाराष्ट्र\",\n            \"district_name\": \"वर्धा\",\n            \"village_name\": \"देवळी\"\n        },\n        \"telugu\": {\n            \"phone_number\": \"999999999\",\n            \"farmer_name\": \"పాండే\",\n            \"state_name\": \"మహారాష్ట్ర\",\n            \"district_name\": \"వార్ధా\",\n            \"village_name\": \"డియోలీ\"\n        },\n        \"punjabi\": {\n            \"phone_number\": \"999999999\",\n            \"farmer_name\": \"ਪਾਂਡੇ\",\n            \"state_name\": \"ਮਹਾਰਾਸ਼ਟਰ\",\n            \"district_name\": \"ਵਰਧਾ\",\n            \"village_name\": \"ਦਿਓਲੀ\"\n        },\n        \"file_id\": \"634561d82bebedddbbf8e211\"\n    },\n    {\n        \"_id\": \"634561dab361cc45bda794af\",\n        \"english\": {\n            \"phone_number\": \"888888888\",\n            \"farmer_name\": \"Kartik\",\n            \"state_name\": \"Telangana\",\n            \"district_name\": \"Rangareddy\",\n            \"village_name\": \"Tamsi\"\n        },\n        \"hindi\": {\n            \"phone_number\": \"888888888\",\n            \"farmer_name\": \"कार्तिक\",\n            \"state_name\": \"तेलंगाना\",\n            \"district_name\": \"रंगारेड्डी\",\n            \"village_name\": \"तमसी\"\n        },\n        \"marathi\": {\n            \"phone_number\": \"888888888\",\n            \"farmer_name\": \"कार्तिक\",\n            \"state_name\": \"तेलंगणा\",\n            \"district_name\": \"रंगारेड्डी\",\n            \"village_name\": \"तामसी\"\n        },\n        \"telugu\": {\n            \"phone_number\": \"888888888\",\n            \"farmer_name\": \"కార్తీక్\",\n            \"state_name\": \"తెలంగాణ\",\n            \"district_name\": \"రంగారెడ్డి\",\n            \"village_name\": \"తాంసి\"\n        },\n        \"punjabi\": {\n            \"phone_number\": \"888888888\",\n            \"farmer_name\": \"ਕਾਰਤਿਕ\",\n            \"state_name\": \"ਤੇਲੰਗਾਨਾ\",\n            \"district_name\": \"ਰੰਗਰੇਡੀ\",\n            \"village_name\": \"ਤਾਮਸੀ\"\n        },\n        \"file_id\": \"634561d82bebedddbbf8e211\"\n    },\n    {\n        \"_id\": \"634561dab361cc45bda794b0\",\n        \"english\": {\n            \"phone_number\": \"666666666\",\n            \"farmer_name\": \"Aanandan\",\n            \"state_name\": \"Maharashtra\",\n            \"district_name\": \"Amravati\",\n            \"village_name\": \"Amravati\"\n        },\n        \"hindi\": {\n            \"phone_number\": \"6666666666\",\n            \"farmer_name\": \"आनंदन\",\n            \"state_name\": \"महाराष्ट्र\",\n            \"district_name\": \"अमरावती\",\n            \"village_name\": \"अमरावती\"\n        },\n        \"marathi\": {\n            \"phone_number\": \"६६६६६६६६६\",\n            \"farmer_name\": \"आनंदन\",\n            \"state_name\": \"महाराष्ट्र\",\n            \"district_name\": \"अमरावती\",\n            \"village_name\": \"अमरावती\"\n        },\n        \"telugu\": {\n            \"phone_number\": \"666666666\",\n            \"farmer_name\": \"ఆనందన్\",\n            \"state_name\": \"మహారాష్ట్ర\",\n            \"district_name\": \"అమరావతి\",\n            \"village_name\": \"అమరావతి\"\n        },\n        \"punjabi\": {\n            \"phone_number\": \"666666666\",\n            \"farmer_name\": \"ਆਨੰਦਨ\",\n            \"state_name\": \"ਮਹਾਰਾਸ਼ਟਰ\",\n            \"district_name\": \"ਅਮਰਾਵਤੀ\",\n            \"village_name\": \"ਅਮਰਾਵਤੀ\"\n        },\n        \"file_id\": \"634561d82bebedddbbf8e211\"\n    },\n    {\n        \"_id\": \"634561dab361cc45bda794b1\",\n        \"english\": {\n            \"phone_number\": \"7777777777\",\n            \"farmer_name\": \"Gupta\",\n            \"state_name\": \"Maharashtra\",\n            \"district_name\": \"Wardha\",\n            \"village_name\": \"Arvi\"\n        },\n        \"hindi\": {\n            \"phone_number\": \"7777777777\",\n            \"farmer_name\": \"गुप्ता\",\n            \"state_name\": \"महाराष्ट्र\",\n            \"district_name\": \"वर्धा\",\n            \"village_name\": \"अरवी\"\n        },\n        \"marathi\": {\n            \"phone_number\": \"७७७७७७७७७७७\",\n            \"farmer_name\": \"गुप्ता\",\n            \"state_name\": \"महाराष्ट्र\",\n            \"district_name\": \"वर्धा\",\n            \"village_name\": \"आर्वी\"\n        },\n        \"telugu\": {\n            \"phone_number\": \"7777777777\",\n            \"farmer_name\": \"గుప్తా\",\n            \"state_name\": \"మహారాష్ట్ర\",\n            \"district_name\": \"వార్ధా\",\n            \"village_name\": \"అర్వి\"\n        },\n        \"punjabi\": {\n            \"phone_number\": \"7777777777\",\n            \"farmer_name\": \"ਗੁਪਤਾ\",\n            \"state_name\": \"ਮਹਾਰਾਸ਼ਟਰ\",\n            \"district_name\": \"ਵਰਧਾ\",\n            \"village_name\": \"ਅਰਵੀ\"\n        },\n        \"file_id\": \"634561d82bebedddbbf8e211\"\n    }\n]"
+				}
+			]
+		}
+	]
+}
