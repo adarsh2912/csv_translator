@@ -2,7 +2,7 @@
 
 ## Prerequisites
 --> Keep running mongodb on localhost<br/>
---> Run RabbitMQ messaging-brocker [installation guide](https://www.rabbitmq.com/#getstarted)
+--> Run RabbitMQ messaging-broker [installation guide](https://www.rabbitmq.com/#getstarted)
 
 ### Step 1 - Clone project
 `git clone https://github.com/adarsh2912/csv_translator.git`
