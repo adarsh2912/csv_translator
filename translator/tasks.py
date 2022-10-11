@@ -1,15 +1,13 @@
 import os
 import json
-import environ
 import requests
 from celery import shared_task
-from pathlib import Path
+from dotenv import load_dotenv
 from translator.models import Translations
 from celery.utils.log import get_task_logger
 
 logger = get_task_logger(__name__)
-env = environ.Env()
-environ.Env.read_env(os.path.join(Path(__file__).resolve().parent.parent, '.env'))
+load_dotenv()
 
 @shared_task(serializer='json')
 def translate_csv_data(fieldName, rows_data, fileId):
@@ -18,7 +16,8 @@ def translate_csv_data(fieldName, rows_data, fileId):
   telugu_trans = google_translator_function(rows_data, target_language='te')
   punjabi_trans = google_translator_function(rows_data, target_language='pa')
   english = [rows_data[item:item + 5] for item in range(0, len(rows_data), 5)]
-  for item in range(4):
+  rows_no = len(english)
+  for item in range(rows_no):
     en = dict(zip(fieldName, english[item]))
     hi = dict(zip(fieldName, hindi_trans[item]))
     mr = dict(zip(fieldName, marathi_trans[item]))
@@ -37,7 +36,7 @@ def translate_csv_data(fieldName, rows_data, fileId):
 
 
 def google_translator_function(rows_data, target_language):
-  api_key = env('GOOGLE_APPLICATION_CREDENTIALS')
+  api_key = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
   url = 'https://translation.googleapis.com/language/translate/v2?key={}'
   batchsize = 100
   data = [rows_data[item:item + batchsize] for item in range(0, len(rows_data), batchsize)]

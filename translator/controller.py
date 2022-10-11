@@ -6,23 +6,28 @@ from translator.helper import (
   save_file_as_base64
 )
 from .models import Translations
-from django.core.serializers import serialize
 from django.views.decorators.http import require_http_methods
 
 @require_http_methods(['POST'])
 def upload_csv(request):
-  file = request.FILES['file']
-  content = file.read()
-  file_id = save_file_as_base64(content)
-  csv_file = save_file_as_temp_csv(content)
-  fieldName, rows_data = get_csv_data(csv_file)
-  job = translate_csv_data.delay(fieldName, rows_data, file_id)
-  response = {
-    'msg': 'uploaded successfully',
-    'file_id': file_id,
-    'job_id': job.id
-  }
-  return JsonResponse(response, status=202)
+  try:
+    file = request.FILES.get('file') 
+    content = file.read()
+    file_id = save_file_as_base64(content)
+    csv_file = save_file_as_temp_csv(content)
+    fieldName, rows_data = get_csv_data(csv_file)
+    job = translate_csv_data.delay(fieldName, rows_data, file_id)
+    response = {
+      'msg': 'uploaded successfully',
+      'file_id': file_id,
+      'job_id': job.id
+    }
+    return JsonResponse(response, status=202)
+  except:
+    response = {
+      'msg': 'unable to move ahead'
+    }
+    return JsonResponse(response, status=500)
 
 @require_http_methods(['GET'])
 def get_translated_data(request, id):
@@ -31,7 +36,7 @@ def get_translated_data(request, id):
   for item in model_to_dict:
     item['_id'] = str(item.get('_id'))
 
-  return JsonResponse(model_to_dict, safe=False, json_dumps_params={'ensure_ascii': False})
+  return JsonResponse(model_to_dict, safe=False, json_dumps_params={'ensure_ascii': False}, status=200)
 
 
 
