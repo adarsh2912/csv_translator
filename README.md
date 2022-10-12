@@ -1,5 +1,28 @@
 # csv_translator
 
+## Problem statement
+1.An API which enables users to upload the farmer list via a csv file and translates the
+data into supported languages(in this case supported languages are: Hindi, Marathi, Telugu and Punjabi). Sample list can be found in **tmp** folder above.
+2. An API which allows us to retrieve all farmer data in the subset of languages specified
+above.
+
+## Asumption for the above problem statements
+1. At a time multiple user can request for translating the csv file.
+2. CSV file can contain thousands of rows.
+
+## Approach for the solution 
+1. As their are multiple request are being made at a single time with huge amount of data to be translated in multiple supporting languages and we are relying on external API calls to translate huge amount of data it can takes some time to translate the data that why i decided to make **non-blocking** POST request for translating CSV data.
+2. POST request for traslating CSV data will Take csv file with request and returns the status-code 202(Accepted) something like:
+`{
+    "msg": "uploaded successfully",
+    "file_id": "6346d9719e1a731be2728066",
+    "job_id": "2e5e9a62-40fc-41f3-8e65-550e7489549f"
+}`
+3. In Background data will get translated using **Google Transalate API** and saved in Database.
+4. Any time we can check our background translation Job Status by GET request using **Job_id** that we have got in above response.
+5. After the Job is done we can fetch our translated data from a GET request with **file_id**. 
+
+
 ## Prerequisites
 --> Keep running mongodb on localhost<br/>
 --> Run RabbitMQ messaging-broker [installation guide](https://www.rabbitmq.com/#getstarted)
