@@ -12,7 +12,7 @@ above.
 
 ## Approach for the solution 
 1. As their are multiple request are being made at a single time with huge amount of data to be translated in multiple supporting languages and we are relying on external API calls to translate huge amount of data it can takes some time to translate the data that why i decided to make **non-blocking** POST request for translating CSV data.
-2. POST request for traslating CSV data will Take csv file with request and returns the status-code 202(Accepted) something like:
+2. POST request for traslating CSV data will Take csv file with request and returns the status-code 202(Accepted) something like:<br/>
 `{
     "msg": "uploaded successfully",
     "file_id": "6346d9719e1a731be2728066",
