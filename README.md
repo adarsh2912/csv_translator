@@ -18,7 +18,7 @@ above.
     "file_id": "6346d9719e1a731be2728066",
     "job_id": "2e5e9a62-40fc-41f3-8e65-550e7489549f"
 }`
-3. In Background data will get translated using **Google Transalate API** and saved in Database.
+3. In Background data will get translated using **Google Translate API** and saved in Database.
 4. Any time we can check our background translation Job Status by GET request using **Job_id** that we have got in above response.
 5. After the Job is done we can fetch our translated data from a GET request with **file_id**. 
 
