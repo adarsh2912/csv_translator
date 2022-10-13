@@ -10,6 +10,15 @@ from django.views.decorators.http import require_http_methods
 
 @require_http_methods(['POST'])
 def upload_csv(request):
+  """Converts the csv to base64 and save it to DB
+
+  Args: 
+      FILE - csv file with request body.
+
+  Returns: 
+      Json-object with status_code 202-Accepted
+      
+  """
   try:
     file = request.FILES.get('file') 
     content = file.read()
@@ -31,6 +40,15 @@ def upload_csv(request):
 
 @require_http_methods(['GET'])
 def get_translated_data(request, id):
+  """Returns translated data of csv file
+
+  Args:
+      id - objectId of file
+
+  Returns:
+      List of Json object containing each rows with translations
+
+  """
   data = Translations.objects.filter(file_id=id)
   model_to_dict=[model for model in data.values()]
   for item in model_to_dict:
