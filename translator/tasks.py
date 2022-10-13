@@ -11,6 +11,16 @@ load_dotenv()
 
 @shared_task(serializer='json')
 def translate_csv_data(fieldName, rows_data, fileId):
+  """Translate data into four languages and save it to database
+
+  Args:
+      fieldName: List of strings of fields from csv file
+      rows_data: list of strings, all rows data as a single list
+  
+  Returns: 
+      Json-object: success message
+
+  """
   hindi_trans = google_translator_function(rows_data, target_language='hi')
   marathi_trans = google_translator_function(rows_data, target_language='mr')
   telugu_trans = google_translator_function(rows_data, target_language='te')
@@ -36,6 +46,16 @@ def translate_csv_data(fieldName, rows_data, fileId):
 
 
 def google_translator_function(rows_data, target_language):
+  """Translate the list of strings into target language
+
+  Args: 
+      rows_data: list of Strings that need to be translated
+      target_language: string denoting particular language
+
+  Returns: 
+      List of strings of translated data. 
+
+  """
   api_key = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
   url = 'https://translation.googleapis.com/language/translate/v2?key={}'
   batchsize = 100
